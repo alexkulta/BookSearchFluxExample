@@ -35,17 +35,19 @@ _onChange() {
 
    let items = _this.state.items;
     
-   let itemHtml ='';
-      
-        for (var i = 0; i < items.length; i++) { 
-             itemHtml += items[i].volumeInfo.title + '\t' + items[i].volumeInfo.description;
-             itemHtml += '<BR>';
-        }
+    const books = items.map(function(result, index) {
+      return (
+        <div key={index}>
+          <h2>{index+1}. {result.volumeInfo.title}</h2>
+          <div>{result.volumeInfo.description}</div>
+        </div>
+      )
+    });
 
     return (
       <div>
         <ul>
-          { itemHtml }
+          { books }
         </ul>
       </div>
     );
